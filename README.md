@@ -1,6 +1,6 @@
 # ackyLog
 
-Incredibly Simple customer logger that added a few extra bells and whistles on standard logging in Go.
+Incredibly Simple custom logger that adds a few extra bells and whistles on standard logging in Go.
 
 ## Requirements 
 
