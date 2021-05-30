@@ -50,6 +50,7 @@ func init() {
 	log.SetFlags(log.LstdFlags | log.Lmicroseconds)
 }
 
+// WEBFORM - Dump all Web Values to the Log. (Carefull with Passwords)
 func WEBFORM(Message string, r *http.Request, variables ...interface{}) {
 	r.ParseForm()
 	for key, values := range r.Form {
@@ -59,6 +60,7 @@ func WEBFORM(Message string, r *http.Request, variables ...interface{}) {
 	}
 }
 
+// TIMED - Start a timer and return a function to call once complete.
 func TIMED(Message string, variables ...interface{}) func() {
 	t := time.Now()
 	return func() {
@@ -68,35 +70,47 @@ func TIMED(Message string, variables ...interface{}) func() {
 	}
 }
 
+// WEB - Write a WEB Message to the Logs
 func WEB(Message string, r *http.Request, variables ...interface{}) {
 	webInfo := "[" + r.RemoteAddr + " - " + r.Method + " - " + r.URL.String() + "] "
 	out := "[[F-GREEN]<-WEB[F-NORMAL]] " + webInfo + fmt.Sprintf(Message, variables...)
 	sendOut(out)
 }
 
+// WARNING - Write a Warning message to the Log
 func WARNING(Message string, variables ...interface{}) {
 	out := "[[F-YELLOW]WARNING[F-NORMAL]] " + fmt.Sprintf(Message, variables...)
 	sendOut(out)
 }
 
+// ERROR - Write an ERROR message to the LOG
 func ERROR(Message string, variables ...interface{}) {
 	out := "[[F-RED]ERROR[F-NORMAL]] " + fmt.Sprintf(Message, variables...)
 	sendOut(out)
 }
 
+// DEBUG - Write a DEBUG message to the LOG
 func DEBUG(Message string, variables ...interface{}) {
 	out := "[[F-CYAN]DEBUG[F-NORMAL]] " + fmt.Sprintf(Message, variables...)
 	sendOut(out)
 }
 
+// INFO - Write an INFO Message and write to the logs.
 func INFO(Message string, variables ...interface{}) {
 	out := "[[F-GREEN]INFO[F-NORMAL]] " + fmt.Sprintf(Message, variables...)
 	sendOut(out)
 }
 
+// SPEW - Dump a variable to the Logs.
 func SPEW(variables ...interface{}) {
 	raw := spew.Sdump(variables...)
 	out := "[SPEW] " + fmt.Sprintf(raw)
+	sendOut(out)
+}
+
+// CUSTOM - Just in Case you want a Custom Header
+func CUSTOM(Header string, Message string, variables ...interface{}) {
+	out := Header + fmt.Sprintf(Message, variables...)
 	sendOut(out)
 }
 
@@ -165,7 +179,7 @@ func colourReplacement(LogEntryMessage string) string {
 func sendOut(logEntry string) {
 
 	st := stackTrace()
-	logEntry = fmt.Sprintf("[F-WHITE][[F-GREEN]%d[F-NORMAL]] [[F-MAGENTA]%v/%v[F-NORMAL] %v:%v] ", getGID(), st.Package, st.File, st.Fname, st.Line) + logEntry
+	logEntry = fmt.Sprintf("[F-WHITE][[F-GREEN]%d[F-NORMAL]] [[F-WHITE]%v/%v[F-NORMAL] %v:%v] ", getGID(), st.Package, st.File, st.Fname, st.Line) + logEntry
 	logEntry = colourReplacement(logEntry)
 	_ = log.Output(1, string(logEntry))
 }
