@@ -22,6 +22,7 @@ type stack struct {
 }
 
 var SHOWCOLOURS = true
+var SHOWDEBUG = true
 
 //TODO: Put all the Colours this.  I'd like more options but not to the point of Remember a ton of colours.
 // Like this https://gist.github.com/RabaDabaDoba/145049536f815903c79944599c6f952a
@@ -92,7 +93,9 @@ func ERROR(Message string, variables ...interface{}) {
 // DEBUG - Write a DEBUG message to the LOG
 func DEBUG(Message string, variables ...interface{}) {
 	out := "[[F-CYAN]DEBUG[F-NORMAL]] " + fmt.Sprintf(Message, variables...)
-	sendOut(out)
+	if SHOWDEBUG {
+		sendOut(out)
+	}
 }
 
 // INFO - Write an INFO Message and write to the logs.
