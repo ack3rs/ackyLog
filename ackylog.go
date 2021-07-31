@@ -182,7 +182,7 @@ func colourReplacement(LogEntryMessage string) string {
 func sendOut(logEntry string) {
 
 	st := stackTrace()
-	logEntry = fmt.Sprintf("[F-WHITE][[F-GREEN]%d[F-NORMAL]] [[F-WHITE]%v/%v[F-NORMAL] %v:%v] ", getGID(), st.Package, st.File, st.Fname, st.Line) + logEntry
+	logEntry = fmt.Sprintf("[F-NORMAL][[F-GREEN]%d[F-NORMAL]] [[F-WHITE]%v/%v[F-NORMAL] %v:%v] ", getGID(), st.Package, st.File, st.Fname, st.Line) + logEntry
 	logEntry = colourReplacement(logEntry)
 	_ = log.Output(1, string(logEntry))
 }
