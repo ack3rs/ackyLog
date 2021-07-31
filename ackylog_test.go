@@ -9,4 +9,6 @@ func TestLog(t *testing.T) {
 
 	WARNING("This is a WARNING Message %d", 1)
 
+	RAW("TEST")
+
 }

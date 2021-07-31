@@ -28,6 +28,7 @@ func main() {
 	myCustomLogger.DEBUG("This is a DEBUG Message %d %v", 1, "Bob")
 	myCustomLogger.INFO("This is a INFO Message %d", 234)
 	myCustomLogger.ERROR("This is a ERROR %s", errors.New("My Big Error"))
+	myCustomLogger.RAW("This is a RAW Message with NO formatting")
 
 	t := func() {
 		// Do something on a GoRoutine

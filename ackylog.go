@@ -117,6 +117,12 @@ func CUSTOM(Header string, Message string, variables ...interface{}) {
 	sendOut(out)
 }
 
+// RAW  - Without the Sprintf
+func RAW(Message string) {
+	out := "[[F-RED]RAW[F-NORMAL]] " + Message
+	sendOut(out)
+}
+
 // Apparently I am going straight to Hell for using this ...
 // https://blog.sgmansfield.com/2015/12/goroutine-ids/
 // But in a busy application with lots of go rountines,  I have found it useful to see the thread id on the logs.
