@@ -24,8 +24,10 @@ type stack struct {
 var SHOWCOLOURS = true
 var SHOWDEBUG = true
 
-//TODO: Put all the Colours this.  I'd like more options but not to the point of Remember a ton of colours.
-// Like this https://gist.github.com/RabaDabaDoba/145049536f815903c79944599c6f952a
+//TODO: Put all the possible colours in like this.  I'd like more options but not to the point of having 
+// to remember a ton of colours.
+// I kinda like this... https://gist.github.com/RabaDabaDoba/145049536f815903c79944599c6f952a
+
 var ColourMap = map[string]string{
 	"F-BLACK":   "\033[1;30m",
 	"F-RED":     "\033[1;31m",
