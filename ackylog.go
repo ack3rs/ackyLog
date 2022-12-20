@@ -151,14 +151,7 @@ func stackTrace() stack {
 	parts := strings.Split(runtime.FuncForPC(pc).Name(), ".")
 	partslength := len(parts)
 	fname := parts[partslength-1]
-	pname := ""
-
-	if parts[partslength-2][0] == '(' {
-		fname = parts[partslength-2] + "." + fname
-		pname = strings.Join(parts[0:partslength-2], ".")
-	} else {
-		pname = strings.Join(parts[0:partslength-1], ".")
-	}
+	pname := strings.Join(parts[0:partslength-1], ".")
 
 	pathSlice := strings.Split(pname, "/")
 	pathLength := len(pathSlice)
