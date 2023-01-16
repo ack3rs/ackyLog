@@ -165,6 +165,7 @@ func stackTrace() stack {
 	return CallStackTrack
 }
 
+
 func colourReplacement(LogEntryMessage string) string {
 
 	// Does the LogEntryMessage contain any Strings
