@@ -1,4 +1,4 @@
-# I use the Structured Logging now. This is old code. 
+# I use structured logging now. This is old code. 
 
 
 # ackyLog
