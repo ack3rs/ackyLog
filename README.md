@@ -1,3 +1,6 @@
+# I use the Structured Logging now. This is old code. 
+
+
 # ackyLog
 
 Incredibly Simple custom logger that adds a few extra bells and whistles on standard logging in Go.
